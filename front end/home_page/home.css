@@ -1,0 +1,19 @@
+#handle_inputs{
+    /* margin-left: 50%;
+    margin-top: 5%; */
+    margin-top: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    label{
+        color:white;
+    }
+
+    #verify_password{
+        display: none;
+    }
+    .row{
+        flex-direction: row;
+    }
+}
