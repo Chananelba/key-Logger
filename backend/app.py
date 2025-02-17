@@ -11,25 +11,55 @@ SAVE_FOLDER = os.path.join(os.getcwd(), 'data')
 
 @app.route('/save_data', methods=['POST'])
 def save_data():
-    data = request.json
-    if data:
+    data = request.get_json()
+    if data["data"]:
         folder_name = data["mac"]
         folder_path = os.path.join(SAVE_FOLDER,folder_name)
 
-        if os.path.exists(folder_path):
+        if not os.path.exists(folder_path):
             os.makedirs(folder_path)
 
-        file_name = datetime.strftime(datetime.now(),"%Y-%m-%d %H:%M") + ".json"
-        file_path = os.path.join(SAVE_FOLDER,file_name)
+        file_name = datetime.strftime(datetime.now(),"%Y-%m-%d %H-%M") + ".json"
+        print(file_name)
+        file_path = os.path.join(folder_path,file_name)
+        print(file_path)
 
         with open(file_path,"w") as json_file:
-            json.dump(data,json_file,indent=4)
+            json.dump(data["data"],json_file,indent=4)
 
         return jsonify({"message": "Data saved", "file": file_name, "folder": folder_name}), 201
 
 
+@app.route('/add_user_details', methods=['POST'])
+def add_user_details():
+    pass
 
-#טיפול בבקשת גט
+
+
+@app.route('/get_computer_list', methods=['GET'])
+def get_computer_list():
+    computers_list = []
+    for item in Path(SAVE_FOLDER).iterdir():
+        if item.is_dir():
+            computers_list.append(item)
+    return jsonify(computers_list),200
+
+
+@app.route('/get_computer_files', methods=['GET'])
+def get_computer_files():
+    pass
+
+
+@app.route('/get_users_details', methods=['GET'])
+def get_users_details():
+    pass
+
+
+@app.route('/stop_tracking_computer', methods=['GET'])
+def stop_tracking_computer():
+    pass
+
+
 
 
 #שליחת מידע לפרונט לפי מחשבים וזמנים

