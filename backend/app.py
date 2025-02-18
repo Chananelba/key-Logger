@@ -1,10 +1,11 @@
 from flask import Flask, request, jsonify, send_file
+from flask_cors import CORS
 import os
 import json
 from datetime import datetime
 from pathlib import Path
 app = Flask(__name__)
-
+CORS(app)
 @app.route('/')
 def home():
     return "server is run "
@@ -30,12 +31,13 @@ def save_data():
 
         return jsonify({"message": "Data saved", "file": file_name, "folder": folder_name}), 201
     return 400
+
 @app.route('/get_computer_list', methods=['GET'])
 def get_computer_list():
     computers_list = []
     for item in Path(SAVE_FOLDER).iterdir():
         if item.is_dir():
-            computers_list.append(item)
+            computers_list.append(item.name)
     return jsonify(computers_list),200
 
 @app.route('/get_list_computer_files', methods=['GET'])

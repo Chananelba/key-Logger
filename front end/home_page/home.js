@@ -1,11 +1,11 @@
 let users = {}
 
-window.onload = function(){
-    users = load_users();
+window.onload = async function(){
+    users =  await load_users();
 }
 
 function load_users(){
-    fetch("users.json")
+    fetch("http://127.0.0.1:5000/get_users_details")
     .then(response => response.json())
     .then(data => {users = data;
         console.log(users);
