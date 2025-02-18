@@ -29,7 +29,7 @@ def save_data():
             json.dump(data["data"],json_file,indent=4)
 
         return jsonify({"message": "Data saved", "file": file_name, "folder": folder_name}), 201
-
+    return 400
 @app.route('/get_computer_list', methods=['GET'])
 def get_computer_list():
     computers_list = []
