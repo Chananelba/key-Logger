@@ -39,7 +39,7 @@ function sudmit(){
 
 function new_user(){
     let verify_password = document.getElementById("verify_password")
-    if (verify_password.style.display == "none"){
+    if (verify_password.style.display == "none" ||verify_password.style.display == "" ){
         verify_password.style.display = "block"
         document.getElementById("sign_up").textContent = "sign in"
     }

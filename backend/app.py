@@ -1,7 +1,8 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 import os
 import json
 from datetime import datetime
+from pathlib import Path
 app = Flask(__name__)
 
 @app.route('/')
@@ -29,13 +30,6 @@ def save_data():
 
         return jsonify({"message": "Data saved", "file": file_name, "folder": folder_name}), 201
 
-
-@app.route('/add_user_details', methods=['POST'])
-def add_user_details():
-    pass
-
-
-
 @app.route('/get_computer_list', methods=['GET'])
 def get_computer_list():
     computers_list = []
@@ -44,29 +38,29 @@ def get_computer_list():
             computers_list.append(item)
     return jsonify(computers_list),200
 
+@app.route('/get_list_computer_files', methods=['GET'])
+def get_list_computer_files():
+    computer_name = request.args.get("computer_name")
+    list_of_files = [item for item in Path(os.path.join(SAVE_FOLDER,computer_name)).iterdir()]
+    return jsonify(list_of_files)
 
-@app.route('/get_computer_files', methods=['GET'])
-def get_computer_files():
-    pass
+@app.route('/get_computer_file', methods=['GET'])
+def get_computer_file():
+    computer_name = request.args.get("computer_name")
+    file_name = request.args.get("file_name")
+    file_path = os.path.join(os.path.join(SAVE_FOLDER,computer_name),file_name)
+    return send_file(file_path)
 
 
 @app.route('/get_users_details', methods=['GET'])
 def get_users_details():
-    pass
+    return send_file(os.path.join(os.getcwd(), 'users/user_details.json'))
+
 
 
 @app.route('/stop_tracking_computer', methods=['GET'])
 def stop_tracking_computer():
     pass
-
-
-
-
-#שליחת מידע לפרונט לפי מחשבים וזמנים
-
-    #יצירת מילון לכל מחשב המפתח שם המחשב הערך מערך של כל התקיות של התאריכים
-
-
 
 
 if __name__ == '__main__':
