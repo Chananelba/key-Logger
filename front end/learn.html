@@ -10,11 +10,23 @@
 </head>
 <body>
 
-    <button id="first_button" onclick="get_somthing()">click here</button>
-    <pre id="list">empty list</pre>
-    <label for="computer_options">Choose an option:</label>
+    <button id="first_button" onclick="get_somthing()">click here to get computer list</button>
+    <br>
+    <br>
+    <br>
+    <label for="computer_options">Choose a computer:</label>
     <select name="copmuter_list" id="computer_options">computers</select>
-    <button onclick="getSelectedOption()">get computer details</button>
+    <button onclick="getSelectedcomputer()">get computer details</button>
+    <br>
+    <div id="computer_files_rpresent">
+    <label for="computer_files" id="compter_file_buten">choose a file</label>
+    <select name="file_list" id="computer_files"></select>
+    <button id="get_computer_details" onclick="getSelectedfile()">get computer details</button>
+    <div id = "result_container">
+        <pre id="result"></pre>
+    </div>
+
+    </div>  
     <div id = "result_container">
         <pre id="result"></pre>
     </div>

@@ -43,7 +43,7 @@ def get_computer_list():
 @app.route('/get_list_computer_files', methods=['GET'])
 def get_list_computer_files():
     computer_name = request.args.get("computer_name")
-    list_of_files = [item for item in Path(os.path.join(SAVE_FOLDER,computer_name)).iterdir()]
+    list_of_files = [item.name for item in Path(os.path.join(SAVE_FOLDER,computer_name)).iterdir()]
     return jsonify(list_of_files)
 
 @app.route('/get_computer_file', methods=['GET'])
