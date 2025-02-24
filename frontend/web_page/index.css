@@ -1,0 +1,104 @@
+/* כלל בסיסי */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('hacker_pic.webp'); /* נתיב לתמונת הרקע */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+}
+
+/* מיכל מרכזי */
+.page_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+}
+
+/* כפתורים */
+.custom_button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+    overflow: hidden;
+    margin: 10px 0;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+/* אפקט גל לכפתורים */
+.custom_button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    transition: transform 0.8s ease;
+}
+
+.custom_button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.custom_button:hover {
+    background-color: #45a049;
+}
+
+/* תוויות */
+label {
+    font-weight: bold;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    margin: 10px 0;
+}
+
+/* תיבות בחירה */
+select {
+    border: 2px solid greenyellow;
+    border-radius: 25px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    margin: 10px 0;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* כפתור הפרטים */
+.details_button_container {
+    margin-top: 20px;
+}
+
+/* תיבה מוסתרת לתוצאות */
+.files_section {
+    margin-top: 20px;
+}
+#result {
+    color: #45a049;
+}

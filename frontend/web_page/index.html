@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Logger Agent</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+</head>
+<body>
+
+    <div class="page_container">
+        <div class="control_panel">
+            <button class="custom_button" onclick="get_computer_list()">Get list of computers</button>
+
+            <label for="computer_list">Choose a computer</label>
+            <select name="computer_list" id="computer_list" onchange="on_computer_selected()">
+                <option value="">Select a computer</option>
+            </select>
+        </div>
+
+        <div class="details_button_container">
+            <button class="custom_button details_button" id="details_button" onclick="get_computer_details()" style="display:none;">Get Computer Details</button>
+        </div>
+
+        <div class="files_section" id="files_section" style="display:none;">
+            <label for="computer_files">Choose a file</label>
+            <select name="computer_files" id="computer_files" onchange="clear_result()"></select>
+
+            <button class="custom_button" onclick="get_file_details()">Get File Details</button>
+            <p id="result"></p>
+        </div>
+    </div>
+
+</body>
+</html>
