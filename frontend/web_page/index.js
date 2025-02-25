@@ -1,10 +1,10 @@
 async function get_computer_list() {
-    let dropdown = document.getElementById("computer_list"); // שינוי ל-ID הנכון
-    dropdown.innerHTML = '';  // איפוס הרשימה הנפתחת
+    let dropdown = document.getElementById("computer_list"); 
+    dropdown.innerHTML = '';  
 
     let defaultOption = document.createElement("option");
     defaultOption.text = "Select a computer";
-    defaultOption.value = ""; // ניתן להשאיר את הערך ריק או לשים ערך מותאם אישית
+    defaultOption.value = ""; 
     dropdown.add(defaultOption);
 
     let computer_list = await get_computer_list_from_server();
@@ -14,7 +14,7 @@ async function get_computer_list() {
         dropdown.add(option);
     });
 
-    // הסתרת השדה של תוצאות
+
     clear_result();
 }
 
@@ -37,14 +37,13 @@ async function on_computer_selected() {
         filesSection.style.display = "block";
         get_files(data);
 
-        // איפוס השדה של התוצאות בכל פעם שמחשב נבחר
         clear_result();
     }
 }
 
 function get_files(data) {
     let fileDropdown = document.getElementById("computer_files");
-    fileDropdown.innerHTML = ''; // איפוס הרשימה
+    fileDropdown.innerHTML = ''; 
 
     data.forEach(function(fileName) {
         let option = document.createElement("option");
@@ -70,10 +69,10 @@ async function get_file_details() {
     const data = await response.json();
 
     let result = document.getElementById("result");
-    result.textContent = JSON.stringify(data, null, 2);  // הצגת תוצאות בפורמט JSON
+    result.textContent = JSON.stringify(data, null, 2); 
 }
 
-// פונקציה לאיפוס התוצאה
+
 function clear_result() {
     let result = document.getElementById("result");
     result.textContent = '';

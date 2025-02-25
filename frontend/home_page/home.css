@@ -1,21 +1,19 @@
-/* כלל בסיסי */
 html, body {
-    height: 100%; /* מוודא שגובה הדף יהיה 100% */
-    margin: 0; /* מסיר מרווחים */
+    height: 100%; 
+    margin: 0; 
 }
 
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('hacker_pic.webp'); /* כאן תשים את הנתיב לתמונה */
-    background-size: cover; /* מכסה את כל המסך ושומר על פרופורציות */
-    background-position: center; /* ממרכז את התמונה */
-    background-repeat: no-repeat; /* מונע חזרה של התמונה */
-    flex-direction: column; /* מסדר את האלמנטים בעמודה */
+    background-image: url('hacker_pic.webp');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    flex-direction: column; 
 }
 
-/* אנימציית גלים ל-welcom */
 @keyframes waveAnimation {
     0% {
         transform: scale(1);
@@ -31,22 +29,21 @@ body {
     }
 }
 
-/* עיצוב ל-div עם מחלקת welcom */
+
 .welcom {
     font-size: 32px;
     font-weight: bold;
-    color: #ffffff; /* צבע לבן */
+    color: #ffffff; 
     text-align: center;
     margin-bottom: 20px;
     animation: waveAnimation 3s infinite ease-in-out;
-    transform-origin: center; /* הגדרת מקור ההגדלה למרכז */
-    position: fixed; /* ממקם אותו בצורה קבועה כך שלא יזוז */
-    top: 100px; /* מגדיר מרחק מהחלק העליון */
-    width: 100%; /* מוודא שהוא תופס את רוחב הדף */
-    z-index: 10; /* מבטיח שהוא יישאר מעל אלמנטים אחרים */
+    transform-origin: center; 
+    position: fixed; 
+    top: 100px; 
+    width: 100%; 
+    z-index: 10; 
 }
 
-/* עיצוב למרכז העמוד */
 .page_center {
     display: flex;
     flex-direction: column;
@@ -54,32 +51,29 @@ body {
     border: 2px solid greenyellow;
     padding: 15px;
     border-radius: 25px;
-    background-color: rgba(0, 0, 0, 0.6); /* רקע חצי שקוף */
+    background-color: rgba(0, 0, 0, 0.6); 
 }
 
-/* עיצוב לקלטים (inputs) */
 input {
     border: 2px solid greenyellow;
     border-radius: 25px;
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.8); /* רקע לבן עם שקיפות קלה */
+    background-color: rgba(255, 255, 255, 0.8); 
 }
 
-/* עיצוב לכפתור */
 button {
-    background-color: #4CAF50; /* צבע הבסיס של הכפתור */
-    color: white; /* צבע הטקסט */
+    background-color: #4CAF50; 
+    color: white; 
     border: none;
     padding: 10px 20px;
     border-radius: 25px;
     cursor: pointer;
     font-size: 16px;
     position: relative;
-    overflow: hidden; /* מאפשר להסתיר חלקים של האנימציה מחוץ לגבולות הכפתור */
-    transition: background-color 0.3s ease; /* שינוי צבע חלק */
+    overflow: hidden; 
+    transition: background-color 0.3s ease; 
 }
 
-/* אפקט גל לכפתור */
 button::before {
     content: '';
     position: absolute;
@@ -87,24 +81,23 @@ button::before {
     left: 50%;
     width: 300%;
     height: 300%;
-    background-color: rgba(255, 255, 255, 0.2); /* הצבע של האפקט */
+    background-color: rgba(255, 255, 255, 0.2); 
     transform: translate(-50%, -50%) scale(0);
     border-radius: 50%;
     transition: transform 0.8s ease;
 }
 
 button:hover::before {
-    transform: translate(-50%, -50%) scale(1); /* אנימציה לגל */
+    transform: translate(-50%, -50%) scale(1); 
 }
 
 button:hover {
-    background-color: #45a049; /* שינוי צבע בעת ריחוף */
+    background-color: #45a049; 
 }
 
-/* עיצוב לתוויות (labels) */
 label {
-    font-weight: bold; /* בולד */
-    font-size: 18px; /* גודל טקסט גדול יותר */
-    color: rgba(255, 255, 255, 255); /* צבע ירוק זוהר */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* צללים לטקסט להדגשה */
+    font-weight: bold;
+    font-size: 18px; 
+    color: rgba(255, 255, 255, 255); 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
 }
